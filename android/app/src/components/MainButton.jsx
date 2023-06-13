@@ -1,21 +1,18 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { mainColor, blackColor, whiteColor, mainContainerWidth } from './Constants';
 
 const MainButton = ({ onPress, buttonText, buttonBgColor, buttonTextColor, borderColor, buttonStyle, buttonWidth }) => {
-  const defaultMainColor = 'rgb(4, 90, 93)';
-  const defaultTextColor = 'white';
-  const defaultWidth = '90%';
-  
   return (
     <TouchableOpacity
       style={[
         styles.button,
         {
-          backgroundColor: buttonBgColor || defaultMainColor,
-          borderColor: borderColor || defaultMainColor,
-          width: buttonWidth || defaultWidth,
+          backgroundColor: buttonBgColor || mainColor,
+          borderColor: borderColor || mainColor,
+          width: buttonWidth || mainContainerWidth,
           borderWidth: 1,
-          shadowColor: 'black',
+          shadowColor: blackColor,
           shadowOffset: { width: 0, height: 2 },
           shadowOpacity: 0.3,
           shadowRadius: 4,
@@ -25,7 +22,7 @@ const MainButton = ({ onPress, buttonText, buttonBgColor, buttonTextColor, borde
       ]}
       onPress={onPress}
     >
-      <Text style={[styles.buttonText, { color: buttonTextColor || defaultTextColor }]}>
+      <Text style={[styles.buttonText, { color: buttonTextColor || whiteColor }]}>
         {buttonText}
       </Text>
     </TouchableOpacity>

@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   StyleSheet,
-  Dimensions,
   FlatList,
   Image,
   Text,
@@ -10,8 +9,12 @@ import {
 import MainButton from '../components/MainButton';
 import { useNavigation } from '@react-navigation/native';
 
-
-const {width, height} = Dimensions.get('window');
+import {
+  containerWidth,
+  width,
+  height,
+  whiteColor
+} from '../components/Constants';
 
 const data = [
   {
@@ -58,7 +61,7 @@ export default HomeScreen = () => {
         <MainButton 
         onPress={handleButtonPress} 
         buttonText="Get Started"
-        buttonStyle={{width: 150, alignSelf: 'flex-end', margin: 20}}
+        buttonStyle={{width: 150, alignSelf: 'flex-end', margin: 30}}
         />
       );
     }
@@ -105,37 +108,36 @@ const styles = StyleSheet.create({
   paginationContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   wrapItem: {
     width,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
-
   backgroundImage: {
-    width: '100%',
-    height: '100%',
-    flex: 1,
+    width: width,
+    height: height,
+    flex: 1
   },
   screenContainer: {
-    height: '80%',
+    height: containerWidth
   },
   textContainer: {
     flex: 1,
     alignItems: 'center',
-    marginTop: 100,
+    marginTop: 100
   },
   title: {
-    color: 'white',
+    color: whiteColor,
     fontSize: 30,
     fontWeight: 'bold',
-    textAlign: 'center',
+    textAlign: 'center'
   },
   subtitle: {
-    color: 'white',
+    color: whiteColor,
     fontSize: 16,
     textAlign: 'center',
-    width: '80%'
+    width: containerWidth
   },
 });
