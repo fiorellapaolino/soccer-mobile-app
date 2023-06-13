@@ -8,6 +8,8 @@ import {
   View,
 } from 'react-native';
 import MainButton from '../components/MainButton';
+import { useNavigation } from '@react-navigation/native';
+
 
 const {width, height} = Dimensions.get('window');
 
@@ -36,8 +38,10 @@ const data = [
 ];
 
 export default HomeScreen = () => {
+  const navigation = useNavigation();
+
   const handleButtonPress = () => {
-    console.log('It will redirect to register screen');
+    navigation.navigate('RegisterScreen');
   };
 
   const renderPagination = () => (
@@ -51,7 +55,11 @@ export default HomeScreen = () => {
   const renderButton = index => {
     if (index === 3) {
       return (
-        <MainButton onPress={handleButtonPress} buttonText="Get Started" />
+        <MainButton 
+        onPress={handleButtonPress} 
+        buttonText="Get Started"
+        buttonStyle={{width: 150, alignSelf: 'flex-end', margin: 20}}
+        />
       );
     }
     return null;
@@ -70,8 +78,8 @@ export default HomeScreen = () => {
               <Text style={styles.title}>{item.title}</Text>
               <Text style={styles.subtitle}>{item.subtitle}</Text>
             </View>
-            {renderButton(index)}
           </View>
+          {renderButton(index)}
         </View>
       </View>
     );
@@ -95,32 +103,28 @@ export default HomeScreen = () => {
 
 const styles = StyleSheet.create({
   paginationContainer: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
+    alignItems: 'center',
   },
   wrapItem: {
     width,
-    padding: 10,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  item: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+
   backgroundImage: {
     width: '100%',
     height: '100%',
+    flex: 1,
   },
   screenContainer: {
     height: '80%',
   },
   textContainer: {
     flex: 1,
-    width: '80%',
-    alignSelf: 'flex-start',
     alignItems: 'center',
+    marginTop: 100,
   },
   title: {
     color: 'white',
@@ -132,5 +136,6 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 16,
     textAlign: 'center',
+    width: '80%'
   },
 });
